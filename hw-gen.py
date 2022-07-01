@@ -24,20 +24,16 @@ def generate_random_equation():
 class EqScene(Scene):
     def construct(self):
         equation = generate_random_equation()
-        #Ecuacion: (40*x**2 + 41*x + 48, 0)
-        #Solucion: \[\{x: -41/80 - sqrt(5999)*I/80\}, \{x: -41/80 + sqrt(5999)*I/80\}\]
-        # Sustituir a/b por \frac{a}{b}
 
+        equation_py  = str(equation.equation)
+        solution_py  = str(equation.solutions)
 
-        eq_py   = str(equation.equation)
-        sol_py  = str(equation.solutions)
         x = Symbol('x')
-        print(sol_py)
-        eq_text = latex(sympify(eq_py))
-        sol_text = latex(sympify(sol_py))
-        eq_tex  = MathTex(r'{}'.format(eq_text))
-        sol_tex = MathTex(r'{}'.format(sol_text))
+        equation_text = latex(sympify(equation_py))
+        solution_text = latex(sympify(solution_py))
+        equation_tex  = MathTex(r'{}'.format(equation_text))
+        solution_tex = MathTex(r'{}'.format(solution_text))
 
-        eq_tex.shift(UP)
-        sol_tex.shift(DOWN)
-        self.add(eq_tex, sol_tex)
+        equation_tex.shift(UP)
+        solution_tex.shift(DOWN)
+        self.add(equation_tex, solution_tex)
